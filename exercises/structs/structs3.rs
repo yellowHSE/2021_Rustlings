@@ -17,6 +17,8 @@ impl Package {
     fn new(sender_country: String, recipient_country: String, weight_in_grams: i32) -> Package {
         if weight_in_grams <= 0 {
             // Something goes here...
+            panic!("The weight is physically impossible!");
+            
         } else {
             Package {
                 sender_country,
@@ -26,12 +28,14 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool {
         // Something goes here...
+        return !(self.sender_country.eq(&self.recipient_country))
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
         // Something goes here...
+        return self.weight_in_grams * cents_per_gram
     }
 }
 
